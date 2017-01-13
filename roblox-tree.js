@@ -16,7 +16,8 @@ function getScriptClassFromWord(word) {
   }
 }
 
-function luaFileToRobloxObject(filePath, baseName) {
+function luaFileToRobloxObject(filePath) {
+  const baseName = path.basename(filePath);
   const parts = baseName.split('.');
 
   return {
@@ -25,9 +26,9 @@ function luaFileToRobloxObject(filePath, baseName) {
   };
 }
 
-function handleFile(filePath, baseName) {
+function handleFile(filePath) {
   if (path.extname(filePath) === '.lua') {
-    return luaFileToRobloxObject(filePath, baseName);
+    return luaFileToRobloxObject(filePath);
   };
 }
 
@@ -59,7 +60,7 @@ function pathToRobloxObjectTree(item, parentNode=[]) {
     object.children = []
     addChildrenToObjectTree(item, object.children)
   } else {
-    Object.assign(object, handleFile(item, name));
+    Object.assign(object, handleFile(item));
   }
 
   if (object) parentNode.push(object);
