@@ -5,6 +5,17 @@ function getFileContents(filePath) {
   return fs.readFileSync(filePath, { encoding: 'utf-8' });
 }
 
+function getBaseNameParts(filePath) {
+  const base = path.basename(filePath);
+  const parts =  base.split('.');
+
+  return {
+    name: parts[0],
+    className: parts[1],
+    extension: parts[2]
+  };
+}
+
 // Allows you to use short words for Roblox Script classes.
 //
 // This allows us to use short words to represent Roblox's Script classes. These
@@ -21,11 +32,10 @@ function getScriptClassFromWord(word) {
 }
 
 function luaFileToRobloxObject(filePath) {
-  const baseName = path.basename(filePath);
-  const parts = baseName.split('.');
+  const parts = getBaseNameParts(filePath);
 
   return {
-    className: getScriptClassFromWord(parts[1]),
+    className: getScriptClassFromWord(parts.className),
     source: getFileContents(filePath)
   };
 }
