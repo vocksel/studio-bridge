@@ -45,13 +45,6 @@ function addChildrenToObjectTree(item, parentNode) {
   };
 }
 
-function handleFolder(item) {
-  return {
-    type: 'Folder',
-    children: []
-  }
-}
-
 function pathToRobloxObjectTree(item, parentNode=[]) {
   const stats = fs.statSync(item);
   const name = path.basename(item);
@@ -60,8 +53,7 @@ function pathToRobloxObjectTree(item, parentNode=[]) {
   var object = { name: nameWithoutExtension };
 
   if (stats.isDirectory()) {
-    Object.assign(object, handleFolder(item))
-    object.children = []
+    Object.assign(object, { children: [] });
     addChildrenToObjectTree(item, object.children)
   } else {
     Object.assign(object, handleFile(item));
