@@ -10,7 +10,7 @@ function startServer(dir, port) {
     const objects = tree.dirToRobloxObjectTree(dir);
 
     res.setHeader('Content-Type', 'application/json');
-    res.end(JSON.stringify(objects));
+    res.end(JSON.stringify(objects, null, 1));
   }).listen(port);
 }
 
