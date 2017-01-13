@@ -46,13 +46,15 @@ function handleFile(filePath) {
   };
 }
 
-function addChildrenToObjectTree(item, parentNode) {
+function addChildrenToObjectTree(item, parentNode=[]) {
   const children = fs.readdirSync(item);
 
   for (let child of children) {
     const fullPath = path.join(item, child);
     pathToRobloxObjectTree(fullPath, parentNode);
   };
+
+  return parentNode;
 }
 
 function pathToRobloxObjectTree(item, parentNode=[]) {
@@ -75,11 +77,7 @@ function pathToRobloxObjectTree(item, parentNode=[]) {
 }
 
 function dirToRobloxObjectTree(dir) {
-  const hierarchy = []
-
-  addChildrenToObjectTree(dir, hierarchy)
-
-  return hierarchy
+  return addChildrenToObjectTree(dir)
 }
 
 module.exports = { dirToRobloxObjectTree }
