@@ -45,12 +45,6 @@ function luaFileToRobloxObject(filePath) {
   };
 }
 
-function handleFile(filePath) {
-  if (path.extname(filePath) === '.lua') {
-    return luaFileToRobloxObject(filePath);
-  };
-}
-
 function addChildrenToObjectTree(item, parentNode=[]) {
   const children = fs.readdirSync(item);
 
@@ -69,7 +63,9 @@ function pathToRobloxObjectTree(item, parentNode=[]) {
     Object.assign(object, { name: path.basename(item), children: [] });
     addChildrenToObjectTree(item, object.children);
   } else {
-    Object.assign(object, handleFile(item));
+    if (path.extname(item) === '.lua') {
+      Object.assign(object, luaFileToRobloxObject(item));
+    };
   }
 
   if (object) parentNode.push(object);
