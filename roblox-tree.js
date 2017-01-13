@@ -1,6 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 
+function getFileContents(filePath) {
+  return fs.readFileSync(filePath, { encoding: 'utf-8' });
+}
+
 // Allows you to use short words for Roblox Script classes.
 //
 // This allows us to use short words to represent Roblox's Script classes. These
@@ -22,7 +26,7 @@ function luaFileToRobloxObject(filePath) {
 
   return {
     className: getScriptClassFromWord(parts[1]),
-    source: fs.readFileSync(filePath, { encoding: 'utf-8' })
+    source: getFileContents(filePath)
   };
 }
 
