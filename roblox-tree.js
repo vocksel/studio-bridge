@@ -39,6 +39,7 @@ function luaFileToRobloxObject(filePath) {
   const parts = getBaseNameParts(filePath);
 
   return {
+    name: parts.name,
     className: getScriptClassFromWord(parts.className),
     source: getFileContents(filePath)
   };
@@ -62,13 +63,10 @@ function addChildrenToObjectTree(item, parentNode=[]) {
 }
 
 function pathToRobloxObjectTree(item, parentNode=[]) {
-  const filename = path.basename(item);
-  const nameParts = filename.split('.');
-
-  var object = { name: nameParts[0] };
+  var object = {};
 
   if (isDirectory(item)) {
-    Object.assign(object, { children: [] });
+    Object.assign(object, { name: path.basename(item), children: [] });
     addChildrenToObjectTree(item, object.children);
   } else {
     Object.assign(object, handleFile(item));
