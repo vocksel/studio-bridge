@@ -54,7 +54,7 @@ function pathToRobloxObjectTree(item, parentNode=[]) {
 
   if (stats.isDirectory()) {
     Object.assign(object, { children: [] });
-    addChildrenToObjectTree(item, object.children)
+    addChildrenToObjectTree(item, object.children);
   } else {
     Object.assign(object, handleFile(item));
   }
