@@ -5,6 +5,10 @@ function getFileContents(filePath) {
   return fs.readFileSync(filePath, { encoding: 'utf-8' });
 }
 
+function isDirectory(filePath) {
+  return fs.statSync(filePath).isDirectory();
+}
+
 function getBaseNameParts(filePath) {
   const base = path.basename(filePath);
   const parts =  base.split('.');
@@ -58,13 +62,12 @@ function addChildrenToObjectTree(item, parentNode=[]) {
 }
 
 function pathToRobloxObjectTree(item, parentNode=[]) {
-  const stats = fs.statSync(item);
   const filename = path.basename(item);
   const nameParts = filename.split('.');
 
   var object = { name: nameParts[0] };
 
-  if (stats.isDirectory()) {
+  if (isDirectory(item)) {
     Object.assign(object, { children: [] });
     addChildrenToObjectTree(item, object.children);
   } else {
