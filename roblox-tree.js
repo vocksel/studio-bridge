@@ -47,10 +47,10 @@ function addChildrenToObjectTree(item, parentNode) {
 
 function pathToRobloxObjectTree(item, parentNode=[]) {
   const stats = fs.statSync(item);
-  const name = path.basename(item);
-  const nameWithoutExtension = name.split('.');
+  const filename = path.basename(item);
+  const nameParts = filename.split('.');
 
-  var object = { name: nameWithoutExtension };
+  var object = { name: nameParts[0] };
 
   if (stats.isDirectory()) {
     Object.assign(object, { children: [] });
