@@ -22,9 +22,15 @@ function getBaseNameParts(filePath) {
 
 // Allows you to use short words for Roblox Script classes.
 //
-// This allows us to use short words to represent Roblox's Script classes. These
-// words are commonly used in filenames to identify which file should be created
-// as which class in-game.
+// This allows you to add '.module' or '.local' between a file's name and
+// extension to define it as a certain Roblox Script.
+//
+// word : str
+//  This can either be 'module' for ModuleScript, 'local' for LocalScript, or
+//  nothing for a plain Script.
+//
+//  For consistency, you can add '.script.lua' to your filenames to clarify
+//  which ones are regular Scripts.
 function getScriptClassFromWord(word) {
   if (word === 'module') {
     return 'ModuleScript';
