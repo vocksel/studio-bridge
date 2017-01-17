@@ -2,7 +2,10 @@ const fs = require('fs');
 const path = require('path');
 
 function getFileContents(filePath) {
-  return fs.readFileSync(filePath, { encoding: 'utf-8' });
+  return fs.readFileSync(filePath, {
+    // UTF-8 encoding so that we get a string instead of bytes.
+    encoding: 'utf-8'
+  });
 }
 
 function isDirectory(filePath) {
