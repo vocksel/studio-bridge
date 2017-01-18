@@ -27,7 +27,22 @@ function getScriptClassFromWord(word) {
   }
 }
 
-function luaFileToRobloxObject(filePath) {
+// Creates an Object representing a Roblox Script instance.
+//
+// The `className` property varies based on the class identifier (the part after
+// the filename). You can see how this works below.
+//
+// Usage:
+//
+//   newScript('Server.lua');
+//   { name: 'Server', className: 'Script', source: '...'}
+//
+//   newScript('Client.local.lua');
+//   { name: 'Client', className: 'LocalScript', source: '...'}
+//
+//   newScript('Helper.module.lua');
+//   { name: 'Helper', className: 'ModuleScript', source: '...'}
+function newScript(filePath) {
   const parts = splitBasename(filePath);
 
   return {
@@ -37,36 +52,66 @@ function luaFileToRobloxObject(filePath) {
   };
 }
 
-function addChildrenToObjectTree(item, parentNode=[]) {
-  const children = fs.readdirSync(item);
+// Creates an Object representing a Roblox Folder instance.
+function newFolder(filePath) {
+  return {
+    name: path.basename(filePath),
+    className: 'Folder',
 
-  for (let child of children) {
-    const fullPath = path.join(item, child);
-    pathToRobloxObjectTree(fullPath, parentNode);
+    // Recursively get children in this folder and all descending folders.
+    children: constructHierarchy(filePath)
+  };
+}
+
+// Creates a new Object representing a Roblox instance.
+//
+// Depending on whether you pass in a file or folder, you'll be given a
+// different result. Folders are passed through newFolder() and files with a
+// 'lua' extension are passed through newScript().
+//
+// Usage:
+//
+//   getObjectFromFile('./path/to/folder/');
+//   { name: 'folder', className: 'Folder', children: [ [Object]... ] }
+//
+//   getObjectFromFile('./path/to/file.local.lua');
+//   { name: 'file', className: 'LocalScript', source: '...'}
+//
+// Returns an Object, or null if `filePath` is not a directory or one of the
+// supported filetypes.
+function getObjectFromFile(filePath) {
+  if (isDirectory(filePath)) {
+    return newFolder(filePath);
+  } else {
+    if (path.extname(filePath) === '.lua') {
+      return newScript(filePath);
+    };
   };
 
-  return parentNode;
+  return null;
 }
 
-function pathToRobloxObjectTree(item, parentNode=[]) {
-  var object = {};
+// Gets children and converts them to their appropriate Object.
+//
+// This is the primary interface to constructing the Object hierarchy. When
+// supplied with a folder, it will recursively gather all of that folder's
+// children, converting them to their appropriate Object.
+//
+// When supplied with a file, this just works like getObjectFromFile() or
+// newScript().
+function constructHierarchy(filePath) {
+  const children = [];
 
-  if (isDirectory(item)) {
-    Object.assign(object, { name: path.basename(item), children: [] });
-    addChildrenToObjectTree(item, object.children);
-  } else {
-    if (path.extname(item) === '.lua') {
-      Object.assign(object, luaFileToRobloxObject(item));
+  for (const child of fs.readdirSync(filePath)) {
+    const childPath = path.join(filePath, child);
+    const object = getObjectFromFile(childPath);
+
+    if (object) {
+      children.push(object);
     };
-  }
+  };
 
-  if (object) parentNode.push(object);
-
-  return parentNode;
+  return children;
 }
 
-function dirToRobloxObjectTree(dir) {
-  return addChildrenToObjectTree(dir)
-}
-
-module.exports = { dirToRobloxObjectTree }
+module.exports = constructHierarchy
