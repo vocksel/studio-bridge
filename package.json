@@ -15,5 +15,8 @@
     "httpservice"
   ],
   "author": "David Minnerly",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "chokidar": "^1.6.1"
+  }
 }
