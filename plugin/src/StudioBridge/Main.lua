@@ -3,6 +3,9 @@ local coreGui = game:GetService("CoreGui")
 local PLUGIN_NAME = "Studio Bridge"
 local INTERFACE = script.Parent.StudioBridgeUI
 
+local importing = require(script.Parent.Importing)
+local protectedImport = importing.protectedImport
+
 --------------------------------------------------------------------------------
 -- Plugin Setup
 --------------------------------------------------------------------------------
@@ -60,6 +63,52 @@ local function createSyncButton()
   return toolbar:CreateButton("Sync", tooltip, icon)
 end
 
+local function setupSyncButton()
+  local button = createSyncButton()
+
+  -- We have to keep this outside of the Click event, otherwise we won't be able
+  -- to debounce it and the user can run multiple auto sync loops.
+  local syncing = false
+
+  local function runImportLoop()
+    local refreshRate = plugin:GetSetting("RefreshRate")
+
+    while syncing do
+      local success = protectedImport()
+
+      if not success or not plugin:GetSetting("AutoSync") then
+        syncing = false
+      end
+
+      wait(refreshRate)
+    end
+  end
+
+  local function autoImport()
+    if not syncing then
+      syncing = true
+      runImportLoop()
+
+      -- This gets run after the above function breaks out of its loop.
+      print("[StudioBridge] Auto syncing stopped")
+    end
+
+    syncing = false
+  end
+
+  button.Click:connect(function()
+    if plugin:GetSetting("AutoSync") then
+      print("[StudioBridge] Started auto syncing file changes. Click "..
+        "\"Sync\" again to stop")
+
+      autoImport(sycning, plugin)
+    else
+      print("[StudioBridge] Importing files from the server")
+      protectedImport()
+    end
+  end)
+end
+
 local function createOptionsButton()
   local tooltip = ("Configure options for %s."):format(PLUGIN_NAME)
   local icon = "rbxassetid://619383224"
@@ -79,7 +128,7 @@ local function setupOptionsButton()
   end)
 end
 
-createSyncButton()
+setupSyncButton()
 setupOptionsButton()
 
 --------------------------------------------------------------------------------
