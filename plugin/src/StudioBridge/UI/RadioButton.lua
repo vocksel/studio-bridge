@@ -23,7 +23,6 @@ RadioButton.__index = RadioButton
 
 
 function RadioButton.new(button, state)
-  print(button:GetFullName(), state)
 	local stateChanged = Instance.new("BindableEvent")
 
 	local radioButton = setmetatable({
