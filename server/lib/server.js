@@ -3,7 +3,7 @@ const chokidar = require('chokidar');
 
 const constructHierarchy = require('./roblox-tree.js');
 
-modules.exports = function startServer(dir, port) {
+module.exports = function startServer(dir, port) {
   console.log(`Server started on http://localhost:${port}`)
   console.log(`Using: ${dir}`)
 
