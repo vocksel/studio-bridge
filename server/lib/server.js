@@ -9,6 +9,8 @@ module.exports = function startServer(dir, port) {
 
   let objects = constructHierarchy(dir);
 
+  // Rebuilds the hierarchy each time a file is changed.
+  // Previously we would build the hierarchy each GET request.
   chokidar.watch(dir).on('change', (path) => {
     objects = constructHierarchy(dir);
   });
