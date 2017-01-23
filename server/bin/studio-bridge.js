@@ -17,7 +17,8 @@ function failWithHelp(msg) {
 program
   .version(pkg.version)
   .arguments('<dir>')
-  .option('-p, --port <port>', 'the port to run the server off of. defaults to 8080.', 8080)
+  .option('-p, --port <port>', 'the port to run the server off of. defaults ' +
+    'to 8080. you also need to change the port that the plugin uses.', 8080)
   .action(dir => {
     const fullPath = path.resolve(dir);
 
