@@ -1,14 +1,14 @@
 <roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4">
 	<External>null</External>
 	<External>nil</External>
-	<Item class="ScreenGui" referent="RBXC1BB9D80A2574D91B3CA1A97EC0D466A">
+	<Item class="ScreenGui" referent="RBXDDC6136C1BC5418AAF98BF6860F014BC">
 		<Properties>
 			<int name="DisplayOrder">0</int>
 			<bool name="Enabled">true</bool>
 			<string name="Name">StudioBridgeUI</string>
 			<bool name="ResetOnSpawn">true</bool>
 		</Properties>
-		<Item class="Frame" referent="RBX9AFDF82F1D344645B2EB2EAA1D0BE0A2">
+		<Item class="Frame" referent="RBXAEA5B55F818C49A4B8BD0B179B15C2D2">
 			<Properties>
 				<bool name="Active">true</bool>
 				<Vector2 name="AnchorPoint">
@@ -39,14 +39,14 @@
 					<XS>0</XS>
 					<XO>350</XO>
 					<YS>0</YS>
-					<YO>200</YO>
+					<YO>130</YO>
 				</UDim2>
 				<token name="SizeConstraint">0</token>
 				<token name="Style">6</token>
 				<bool name="Visible">true</bool>
 				<int name="ZIndex">1</int>
 			</Properties>
-			<Item class="Frame" referent="RBX3285360FE83D4984A99F182B8A94CA02">
+			<Item class="Frame" referent="RBX504DA74F12AB429A91F1C4FD170768F0">
 				<Properties>
 					<bool name="Active">false</bool>
 					<Vector2 name="AnchorPoint">
@@ -84,7 +84,7 @@
 					<bool name="Visible">true</bool>
 					<int name="ZIndex">1</int>
 				</Properties>
-				<Item class="Frame" referent="RBX3323D73D552A4735912882C85F3DEBA9">
+				<Item class="Frame" referent="RBX9CA5D6B0CC1B4D49ACB5A4291252868D">
 					<Properties>
 						<bool name="Active">false</bool>
 						<Vector2 name="AnchorPoint">
@@ -122,7 +122,7 @@
 						<bool name="Visible">true</bool>
 						<int name="ZIndex">1</int>
 					</Properties>
-					<Item class="TextLabel" referent="RBXDD308ED103434E9A862F0BDDE86204EA">
+					<Item class="TextLabel" referent="RBX5A531043F12B4F2BBA28F9530A5E4A65">
 						<Properties>
 							<bool name="Active">false</bool>
 							<Vector2 name="AnchorPoint">
@@ -173,7 +173,7 @@
 						</Properties>
 					</Item>
 				</Item>
-				<Item class="Frame" referent="RBXC1A0EF388D6C46298244117EAF4BEE29">
+				<Item class="Frame" referent="RBX9E85FFC26C984859B9B08BF9ECFE23D2">
 					<Properties>
 						<bool name="Active">false</bool>
 						<Vector2 name="AnchorPoint">
@@ -211,238 +211,7 @@
 						<bool name="Visible">true</bool>
 						<int name="ZIndex">1</int>
 					</Properties>
-					<Item class="Frame" referent="RBXDFB16DDBFF3B4CE08A3878034BF11A8C">
-						<Properties>
-							<bool name="Active">false</bool>
-							<Vector2 name="AnchorPoint">
-								<X>0</X>
-								<Y>0</Y>
-							</Vector2>
-							<Color3 name="BackgroundColor3">4294967295</Color3>
-							<float name="BackgroundTransparency">1</float>
-							<Color3 name="BorderColor3">4279970357</Color3>
-							<int name="BorderSizePixel">1</int>
-							<bool name="ClipsDescendants">false</bool>
-							<bool name="Draggable">false</bool>
-							<string name="Name">RefreshRate</string>
-							<Ref name="NextSelectionDown">null</Ref>
-							<Ref name="NextSelectionLeft">null</Ref>
-							<Ref name="NextSelectionRight">null</Ref>
-							<Ref name="NextSelectionUp">null</Ref>
-							<UDim2 name="Position">
-								<XS>0</XS>
-								<XO>0</XO>
-								<YS>0</YS>
-								<YO>62</YO>
-							</UDim2>
-							<float name="Rotation">0</float>
-							<bool name="Selectable">false</bool>
-							<Ref name="SelectionImageObject">null</Ref>
-							<UDim2 name="Size">
-								<XS>1</XS>
-								<XO>0</XO>
-								<YS>0</YS>
-								<YO>61</YO>
-							</UDim2>
-							<token name="SizeConstraint">0</token>
-							<token name="Style">0</token>
-							<bool name="Visible">true</bool>
-							<int name="ZIndex">1</int>
-						</Properties>
-						<Item class="TextLabel" referent="RBX7F2B49B4F8E24E81B66A78F4724CDA7E">
-							<Properties>
-								<bool name="Active">false</bool>
-								<Vector2 name="AnchorPoint">
-									<X>0</X>
-									<Y>0</Y>
-								</Vector2>
-								<Color3 name="BackgroundColor3">4294967295</Color3>
-								<float name="BackgroundTransparency">1</float>
-								<Color3 name="BorderColor3">4279970357</Color3>
-								<int name="BorderSizePixel">1</int>
-								<bool name="ClipsDescendants">false</bool>
-								<bool name="Draggable">false</bool>
-								<token name="Font">4</token>
-								<token name="FontSize">6</token>
-								<string name="Name">Title</string>
-								<Ref name="NextSelectionDown">null</Ref>
-								<Ref name="NextSelectionLeft">null</Ref>
-								<Ref name="NextSelectionRight">null</Ref>
-								<Ref name="NextSelectionUp">null</Ref>
-								<UDim2 name="Position">
-									<XS>0</XS>
-									<XO>48</XO>
-									<YS>0</YS>
-									<YO>0</YO>
-								</UDim2>
-								<float name="Rotation">0</float>
-								<bool name="Selectable">false</bool>
-								<Ref name="SelectionImageObject">null</Ref>
-								<UDim2 name="Size">
-									<XS>1</XS>
-									<XO>-48</XO>
-									<YS>0</YS>
-									<YO>16</YO>
-								</UDim2>
-								<token name="SizeConstraint">0</token>
-								<string name="Text">Refresh Rate</string>
-								<Color3 name="TextColor3">4294967295</Color3>
-								<bool name="TextScaled">false</bool>
-								<float name="TextSize">16</float>
-								<Color3 name="TextStrokeColor3">4278190080</Color3>
-								<float name="TextStrokeTransparency">1</float>
-								<float name="TextTransparency">0</float>
-								<bool name="TextWrapped">true</bool>
-								<token name="TextXAlignment">0</token>
-								<token name="TextYAlignment">0</token>
-								<bool name="Visible">true</bool>
-								<int name="ZIndex">1</int>
-							</Properties>
-						</Item>
-						<Item class="TextBox" referent="RBXDAAD0A4AFF774B068B28A863CE87363C">
-							<Properties>
-								<bool name="Active">true</bool>
-								<Vector2 name="AnchorPoint">
-									<X>0</X>
-									<Y>0</Y>
-								</Vector2>
-								<Color3 name="BackgroundColor3">4282466625</Color3>
-								<float name="BackgroundTransparency">1</float>
-								<Color3 name="BorderColor3">4279970357</Color3>
-								<int name="BorderSizePixel">1</int>
-								<bool name="ClearTextOnFocus">false</bool>
-								<bool name="ClipsDescendants">false</bool>
-								<bool name="Draggable">false</bool>
-								<token name="Font">3</token>
-								<token name="FontSize">5</token>
-								<bool name="MultiLine">false</bool>
-								<string name="Name">InputField</string>
-								<Ref name="NextSelectionDown">null</Ref>
-								<Ref name="NextSelectionLeft">null</Ref>
-								<Ref name="NextSelectionRight">null</Ref>
-								<Ref name="NextSelectionUp">null</Ref>
-								<UDim2 name="Position">
-									<XS>0</XS>
-									<XO>0</XO>
-									<YS>0</YS>
-									<YO>0</YO>
-								</UDim2>
-								<float name="Rotation">0</float>
-								<bool name="Selectable">true</bool>
-								<Ref name="SelectionImageObject">null</Ref>
-								<bool name="ShowNativeInput">true</bool>
-								<UDim2 name="Size">
-									<XS>0</XS>
-									<XO>32</XO>
-									<YS>0</YS>
-									<YO>20</YO>
-								</UDim2>
-								<token name="SizeConstraint">0</token>
-								<string name="Text">0.25</string>
-								<Color3 name="TextColor3">4294967295</Color3>
-								<bool name="TextScaled">false</bool>
-								<float name="TextSize">14</float>
-								<Color3 name="TextStrokeColor3">4278190080</Color3>
-								<float name="TextStrokeTransparency">1</float>
-								<float name="TextTransparency">0</float>
-								<bool name="TextWrapped">false</bool>
-								<token name="TextXAlignment">0</token>
-								<token name="TextYAlignment">1</token>
-								<bool name="Visible">true</bool>
-								<int name="ZIndex">1</int>
-							</Properties>
-							<Item class="Frame" referent="RBX44640689048D47C387AF0D9FF50937BC">
-								<Properties>
-									<bool name="Active">false</bool>
-									<Vector2 name="AnchorPoint">
-										<X>0</X>
-										<Y>0</Y>
-									</Vector2>
-									<Color3 name="BackgroundColor3">4283468016</Color3>
-									<float name="BackgroundTransparency">0</float>
-									<Color3 name="BorderColor3">4279970357</Color3>
-									<int name="BorderSizePixel">0</int>
-									<bool name="ClipsDescendants">false</bool>
-									<bool name="Draggable">false</bool>
-									<string name="Name">Underline</string>
-									<Ref name="NextSelectionDown">null</Ref>
-									<Ref name="NextSelectionLeft">null</Ref>
-									<Ref name="NextSelectionRight">null</Ref>
-									<Ref name="NextSelectionUp">null</Ref>
-									<UDim2 name="Position">
-										<XS>0</XS>
-										<XO>0</XO>
-										<YS>1</YS>
-										<YO>0</YO>
-									</UDim2>
-									<float name="Rotation">0</float>
-									<bool name="Selectable">false</bool>
-									<Ref name="SelectionImageObject">null</Ref>
-									<UDim2 name="Size">
-										<XS>1</XS>
-										<XO>0</XO>
-										<YS>0</YS>
-										<YO>2</YO>
-									</UDim2>
-									<token name="SizeConstraint">0</token>
-									<token name="Style">0</token>
-									<bool name="Visible">true</bool>
-									<int name="ZIndex">1</int>
-								</Properties>
-							</Item>
-						</Item>
-						<Item class="TextLabel" referent="RBX0439884B63924527B89E8F38934C829C">
-							<Properties>
-								<bool name="Active">false</bool>
-								<Vector2 name="AnchorPoint">
-									<X>0</X>
-									<Y>0</Y>
-								</Vector2>
-								<Color3 name="BackgroundColor3">4294967295</Color3>
-								<float name="BackgroundTransparency">1</float>
-								<Color3 name="BorderColor3">4279970357</Color3>
-								<int name="BorderSizePixel">1</int>
-								<bool name="ClipsDescendants">false</bool>
-								<bool name="Draggable">false</bool>
-								<token name="Font">3</token>
-								<token name="FontSize">6</token>
-								<string name="Name">Description</string>
-								<Ref name="NextSelectionDown">null</Ref>
-								<Ref name="NextSelectionLeft">null</Ref>
-								<Ref name="NextSelectionRight">null</Ref>
-								<Ref name="NextSelectionUp">null</Ref>
-								<UDim2 name="Position">
-									<XS>0</XS>
-									<XO>48</XO>
-									<YS>0</YS>
-									<YO>16</YO>
-								</UDim2>
-								<float name="Rotation">0</float>
-								<bool name="Selectable">false</bool>
-								<Ref name="SelectionImageObject">null</Ref>
-								<UDim2 name="Size">
-									<XS>1</XS>
-									<XO>-48</XO>
-									<YS>0</YS>
-									<YO>45</YO>
-								</UDim2>
-								<token name="SizeConstraint">0</token>
-								<string name="Text">When &quot;Auto Sync&quot; is enabled, determines how often (in seconds) we sync with the server. Requires reloading the game.</string>
-								<Color3 name="TextColor3">4294967295</Color3>
-								<bool name="TextScaled">false</bool>
-								<float name="TextSize">15</float>
-								<Color3 name="TextStrokeColor3">4278190080</Color3>
-								<float name="TextStrokeTransparency">1</float>
-								<float name="TextTransparency">0</float>
-								<bool name="TextWrapped">true</bool>
-								<token name="TextXAlignment">0</token>
-								<token name="TextYAlignment">0</token>
-								<bool name="Visible">true</bool>
-								<int name="ZIndex">1</int>
-							</Properties>
-						</Item>
-					</Item>
-					<Item class="Frame" referent="RBX68257668EAA94F0F9CF6D8A63389E676">
+					<Item class="Frame" referent="RBX0BDF257326034C8882EA374B6195B6E3">
 						<Properties>
 							<bool name="Active">false</bool>
 							<Vector2 name="AnchorPoint">
@@ -480,7 +249,7 @@
 							<bool name="Visible">true</bool>
 							<int name="ZIndex">1</int>
 						</Properties>
-						<Item class="TextButton" referent="RBX5FE7FE7606A942B99431F5677BD8099A">
+						<Item class="TextButton" referent="RBX23595F7FEDC84408B8B285FD66E48DA0">
 							<Properties>
 								<bool name="Active">true</bool>
 								<Vector2 name="AnchorPoint">
@@ -534,46 +303,7 @@
 								<int name="ZIndex">1</int>
 							</Properties>
 						</Item>
-						<Item class="Frame" referent="RBX6A4AA50002044E8090B0010C40457700">
-							<Properties>
-								<bool name="Active">false</bool>
-								<Vector2 name="AnchorPoint">
-									<X>0</X>
-									<Y>0</Y>
-								</Vector2>
-								<Color3 name="BackgroundColor3">4294967295</Color3>
-								<float name="BackgroundTransparency">0.75</float>
-								<Color3 name="BorderColor3">4279970357</Color3>
-								<int name="BorderSizePixel">0</int>
-								<bool name="ClipsDescendants">false</bool>
-								<bool name="Draggable">false</bool>
-								<string name="Name">BottomSeparator</string>
-								<Ref name="NextSelectionDown">null</Ref>
-								<Ref name="NextSelectionLeft">null</Ref>
-								<Ref name="NextSelectionRight">null</Ref>
-								<Ref name="NextSelectionUp">null</Ref>
-								<UDim2 name="Position">
-									<XS>0</XS>
-									<XO>0</XO>
-									<YS>1</YS>
-									<YO>8</YO>
-								</UDim2>
-								<float name="Rotation">0</float>
-								<bool name="Selectable">false</bool>
-								<Ref name="SelectionImageObject">null</Ref>
-								<UDim2 name="Size">
-									<XS>1</XS>
-									<XO>0</XO>
-									<YS>0</YS>
-									<YO>1</YO>
-								</UDim2>
-								<token name="SizeConstraint">0</token>
-								<token name="Style">0</token>
-								<bool name="Visible">true</bool>
-								<int name="ZIndex">1</int>
-							</Properties>
-						</Item>
-						<Item class="TextLabel" referent="RBXF7945A3E22334BAA8495CE4810FC1B70">
+						<Item class="TextLabel" referent="RBX128AAAB68C10432E82A1C03D8F5B92BB">
 							<Properties>
 								<bool name="Active">false</bool>
 								<Vector2 name="AnchorPoint">
@@ -623,7 +353,7 @@
 								<int name="ZIndex">1</int>
 							</Properties>
 						</Item>
-						<Item class="TextLabel" referent="RBXBF2D338E47544DDB839ADD7176EDFF57">
+						<Item class="TextLabel" referent="RBX17A09DBDB56347D4B0B70CE6711D71CE">
 							<Properties>
 								<bool name="Active">false</bool>
 								<Vector2 name="AnchorPoint">
@@ -676,7 +406,7 @@
 					</Item>
 				</Item>
 			</Item>
-			<Item class="TextButton" referent="RBX2D084F667EFB4B2C91C7144B0C69D77D">
+			<Item class="TextButton" referent="RBX50BFCEC86DE6478C8691CA56647DFA49">
 				<Properties>
 					<bool name="Active">true</bool>
 					<Vector2 name="AnchorPoint">

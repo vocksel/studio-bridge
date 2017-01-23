@@ -3,6 +3,14 @@ local coreGui = game:GetService("CoreGui")
 local PLUGIN_NAME = "Studio Bridge"
 local INTERFACE = script.Parent.StudioBridgeUI
 
+-- When using Auto Sync, this determines how often (in seconds) we sync with the
+-- server.
+--
+-- All plugins share a limit of 500 HTTP requests per minute, so we need to set
+-- this fairly conservatively. We don't want to perform too many requests and
+-- stall out other plugins.
+local REFRESH_RATE = 60/40 -- 40 requests per minute. 1.5 requests a second.
+
 local importing = require(script.Parent.Importing)
 local protectedImport = importing.protectedImport
 
@@ -31,7 +39,6 @@ local function initializeSettings()
     plugin:SetSettings("RunBefore", true)
 
     plugin:SetSettings("AutoSync", false)
-    plugin:SetSettings("RefreshRate", .25)
   end
 end
 
@@ -71,8 +78,6 @@ local function setupSyncButton()
   local syncing = false
 
   local function runImportLoop()
-    local refreshRate = plugin:GetSetting("RefreshRate")
-
     while syncing do
       local success = protectedImport()
 
@@ -80,7 +85,7 @@ local function setupSyncButton()
         syncing = false
       end
 
-      wait(refreshRate)
+      wait(REFRESH_RATE)
     end
   end
 
@@ -149,27 +154,6 @@ local function setupAutoSyncButton(button)
   end)
 end
 
-local function setupRefreshRateField(field)
-  local initialValue = plugin:GetSetting("RefreshRate")
-
-  -- If the user doesn't press enter to save their changes, we use this to
-  -- revert back to the last value.
-  local prevValue = initialValue
-
-  field.Text = initialValue
-
-  field.FocusLost:connect(function(enterPressed)
-    local newValue = tonumber(field.Text)
-
-    if enterPressed and newValue then
-      prevValue = newValue
-      plugin:SetSetting("RefreshRate", newValue)
-    else
-      field.Text = prevValue
-    end
-  end)
-end
-
 local function setupUI()
   INTERFACE.Parent = coreGui
   INTERFACE.Core.Visible = false
@@ -180,7 +164,6 @@ local function setupUIElements()
 
   setupCloseButton(INTERFACE.Core.Close)
   setupAutoSyncButton(options.AutoSync.Button)
-  setupRefreshRateField(options.RefreshRate.InputField)
 end
 
 setupUI()
