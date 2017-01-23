@@ -2,10 +2,12 @@
   "name": "studio-bridge",
   "version": "1.0.0",
   "description": "Write your Lua code on the file system and have it automatically synced to Studio.",
-  "main": "index.js",
+  "main": "./lib/server.js",
+  "bin": {
+    "studio-bridge": "./bin/studio-bridge.js"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "roblox",
@@ -17,6 +19,7 @@
   "author": "David Minnerly",
   "license": "MIT",
   "dependencies": {
-    "chokidar": "^1.6.1"
+    "chokidar": "^1.6.1",
+    "commander": "^2.9.0"
   }
 }
