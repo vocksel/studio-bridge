@@ -11,8 +11,12 @@ module.exports = function startServer(dir, port) {
 
   // Rebuilds the hierarchy each time a file is changed.
   // Previously we would build the hierarchy each GET request.
-  chokidar.watch(dir).on('change', (path) => {
-    objects = constructHierarchy(dir);
+  chokidar.watch(dir).on('all', (evt, path) => {
+    // 'change' for when a file is modified.
+    // 'unlink' for when a file is removed or renamed.
+    if (evt === 'change' || evt === 'unlink') {
+      objects = constructHierarchy(dir);
+    }
   });
 
   http.createServer((req, res) => {
