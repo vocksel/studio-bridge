@@ -140,7 +140,7 @@ setupOptionsButton()
 -- UI Functionality
 --------------------------------------------------------------------------------
 
-local RadioButton = require(script.Parent.UI.RadioButton)
+local RadioButton = require(script.Parent.UI.Buttons.RadioButton)
 
 local function setupCloseButton(button)
   button.MouseButton1Down:connect(hideOptionsUI)
