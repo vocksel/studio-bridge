@@ -34,7 +34,7 @@ local isAutoSyncEnabled = false
 local function createSyncButton()
   local tooltip = "Establishes a connection to the server and starts syncing "..
     "changes made on the filesystem."
-  local icon = "rbxassetid://619356746"
+  local icon = "rbxassetid://628461615"
 
   return toolbar:CreateButton("Sync", tooltip, icon)
 end
@@ -86,7 +86,7 @@ end
 local function createAutoSyncToggleButton()
   local tooltip = "Changes the \"Sync\" button to a toggle. When on, file "..
     "changes will be synced automatically."
-  local icon = "rbxassetid://619383224"
+  local icon = "rbxassetid://628461676"
 
   return toolbar:CreateButton("Toggle Auto Syncing", tooltip, icon)
 end
