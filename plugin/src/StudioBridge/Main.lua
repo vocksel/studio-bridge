@@ -2,12 +2,12 @@ local coreGui = game:GetService("CoreGui")
 
 local PLUGIN_NAME = "Studio Bridge"
 
--- When using Auto Sync, this determines how often (in seconds) we sync with the
--- server.
---
--- All plugins share a limit of 500 HTTP requests per minute, so we need to set
--- this fairly conservatively. We don't want to perform too many requests and
--- stall out other plugins.
+--[[ When using Auto Sync, this determines how often (in seconds) we sync with
+  the server.
+
+  All plugins share a limit of 500 HTTP requests per minute, so we need to set
+  this fairly conservatively. We don't want to perform too many requests and
+  stall out other plugins. ]]
 local REFRESH_RATE = 60/40 -- 40 requests per minute. 1.5 requests a second.
 
 local importing = require(script.Parent.Importing)
@@ -42,8 +42,8 @@ end
 local function setupSyncButton()
   local button = createSyncButton()
 
-  -- We have to keep this outside of the Click event, otherwise we won't be able
-  -- to debounce it and the user can run multiple auto sync loops.
+  --[[ We have to keep this outside of the Click event, otherwise we won't be
+    able to debounce it and the user can run multiple auto sync loops. ]]
   local syncing = false
 
   local function runImportLoop()
