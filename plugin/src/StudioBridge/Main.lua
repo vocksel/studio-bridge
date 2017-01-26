@@ -50,7 +50,7 @@ local function setupSyncButton()
     while syncing do
       local success = protectedImport()
 
-      if not success and syncing then
+      if not success and syncing and isAutoSyncEnabled then
         syncing = false
         break
       end
