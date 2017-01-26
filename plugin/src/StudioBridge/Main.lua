@@ -50,8 +50,9 @@ local function setupSyncButton()
     while syncing do
       local success = protectedImport()
 
-      if not success then
+      if not success and syncing then
         syncing = false
+        break
       end
 
       wait(REFRESH_RATE)
