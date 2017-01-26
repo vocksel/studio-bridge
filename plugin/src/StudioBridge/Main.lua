@@ -1,7 +1,6 @@
 local coreGui = game:GetService("CoreGui")
 
 local PLUGIN_NAME = "Studio Bridge"
-local INTERFACE = script.Parent.StudioBridgeUI
 
 -- When using Auto Sync, this determines how often (in seconds) we sync with the
 -- server.
@@ -22,41 +21,11 @@ local protectedImport = importing.protectedImport
 local plugin = plugin
 local toolbar = plugin:CreateToolbar(PLUGIN_NAME)
 
--- Global 'active' state for the Options window.
---
--- This would be better off encapsulated in a class, along with the functions to
--- show/hide the Options window.
-local isOptionsWindowActive = false
+--[[ Global state for auto syncing.
 
---------------------------------------------------------------------------------
--- Settings
---------------------------------------------------------------------------------
-
-local function initializeSettings()
-  local runBefore = plugin:GetSetting("RunBefore") or false
-
-  if not runBefore then
-    plugin:SetSettings("RunBefore", true)
-
-    plugin:SetSettings("AutoSync", false)
-  end
-end
-
-initializeSettings()
-
---------------------------------------------------------------------------------
--- UI Display
---------------------------------------------------------------------------------
-
-local function showOptionsUI()
-  isOptionsWindowActive = true
-  INTERFACE.Core.Visible = true
-end
-
-local function hideOptionsUI()
-  isOptionsWindowActive = false
-  INTERFACE.Core.Visible = false
-end
+  If true, the "Sync" button will continuously sync with the server. If false,
+  it syncs once. ]]
+local isAutoSyncEnabled = false
 
 --------------------------------------------------------------------------------
 -- Button Setup
@@ -81,7 +50,7 @@ local function setupSyncButton()
     while syncing do
       local success = protectedImport()
 
-      if not success or not plugin:GetSetting("AutoSync") then
+      if not success then
         syncing = false
       end
 
@@ -102,10 +71,9 @@ local function setupSyncButton()
   end
 
   button.Click:connect(function()
-    if plugin:GetSetting("AutoSync") then
+    if isAutoSyncEnabled then
       print("[StudioBridge] Started auto syncing file changes. Click "..
         "\"Sync\" again to stop")
-
       autoImport(sycning, plugin)
     else
       print("[StudioBridge] Importing files from the server")
@@ -114,57 +82,22 @@ local function setupSyncButton()
   end)
 end
 
-local function createOptionsButton()
-  local tooltip = ("Configure options for %s."):format(PLUGIN_NAME)
+local function createAutoSyncToggleButton()
+  local tooltip = "Changes the \"Sync\" button to a toggle. When on, file "..
+    "changes will be synced automatically."
   local icon = "rbxassetid://619383224"
 
-  return toolbar:CreateButton("Settings", tooltip, icon)
+  return toolbar:CreateButton("Toggle Auto Syncing", tooltip, icon)
 end
 
-local function setupOptionsButton()
-  local button = createOptionsButton()
+local function setupAutoSyncToggleButton()
+  local button = createAutoSyncToggleButton()
 
   button.Click:connect(function()
-    if isOptionsWindowActive then
-      hideOptionsUI()
-    else
-      showOptionsUI()
-    end
+    isAutoSyncEnabled = not isAutoSyncEnabled
+    print("[StudioBridge] Auto syncing set to", isAutoSyncEnabled)
   end)
 end
 
 setupSyncButton()
-setupOptionsButton()
-
---------------------------------------------------------------------------------
--- UI Functionality
---------------------------------------------------------------------------------
-
-local RadioButton = require(script.Parent.UI.Buttons.RadioButton)
-
-local function setupCloseButton(button)
-  button.MouseButton1Down:connect(hideOptionsUI)
-end
-
-local function setupAutoSyncButton(button)
-  local radioButton = RadioButton.new(button, plugin:GetSetting("AutoSync"))
-
-  radioButton.StateChanged.Event:connect(function(newState)
-    plugin:SetSetting("AutoSync", newState)
-  end)
-end
-
-local function setupUI()
-  INTERFACE.Parent = coreGui
-  INTERFACE.Core.Visible = false
-end
-
-local function setupUIElements()
-  local options = INTERFACE.Core.Margin.Options
-
-  setupCloseButton(INTERFACE.Core.Close)
-  setupAutoSyncButton(options.AutoSync.Button)
-end
-
-setupUI()
-setupUIElements()
+setupAutoSyncToggleButton()
