@@ -12,4 +12,6 @@ local_app_data = os.environ["LocalAppData"]
 plugins_folder = os.path.join(local_app_data, "Roblox/Plugins")
 plugin = os.path.join(plugins_folder, "StudioBridge.rbxmx")
 
-ModelCompiler("src/", plugin).compile()
+parent_dir = os.path.dirname(__file__)
+
+ModelCompiler(os.path.join(parent_dir, "src/"), plugin).compile()
