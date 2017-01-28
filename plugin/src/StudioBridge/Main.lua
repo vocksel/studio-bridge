@@ -1,6 +1,7 @@
 local coreGui = game:GetService("CoreGui")
 
 local PLUGIN_NAME = "Studio Bridge"
+local INTERFACE = script.Parent.StudioBridgeUI
 
 --[[ When using Auto Sync, this determines how often (in seconds) we sync with
   the server.
@@ -26,6 +27,24 @@ local toolbar = plugin:CreateToolbar(PLUGIN_NAME)
   If true, the "Sync" button will continuously sync with the server. If false,
   it syncs once. ]]
 local isAutoSyncEnabled = false
+
+--------------------------------------------------------------------------------
+-- User Interface
+--------------------------------------------------------------------------------
+
+local function hideUIComponents()
+  for _, frame in ipairs(INTERFACE:GetChildren()) do
+    frame.Visible = false
+  end
+end
+
+local function setupUI()
+  hideUIComponents()
+
+  INTERFACE.Parent = coreGui
+end
+
+setupUI()
 
 --------------------------------------------------------------------------------
 -- Button Setup
@@ -100,5 +119,32 @@ local function setupAutoSyncToggleButton()
   end)
 end
 
+local function createInfoButton()
+  local tooltip = ("Displays information on how to use %s."):format(PLUGIN_NAME)
+  local icon = "rbxassetid://628461727"
+
+  return toolbar:CreateButton("Help", tooltip, icon)
+end
+
+local function setupInfoButton()
+  local button = createInfoButton()
+  local intro = INTERFACE.Intro
+
+  button.Click:connect(function()
+    intro.Visible = not intro.Visible
+  end)
+
+  intro.Close.MouseButton1Down:connect(function()
+    plugin:SetSetting("IntroDismissed", true)
+    intro.Visible = false
+  end)
+
+  -- Shows the Intro gui by default, until it's been dismissed.
+  if not plugin:GetSetting("IntroDismissed") then
+    intro.Visible = true
+  end
+end
+
 setupSyncButton()
 setupAutoSyncToggleButton()
+setupInfoButton()
