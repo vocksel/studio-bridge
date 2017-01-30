@@ -22,12 +22,6 @@ local protectedImport = importing.protectedImport
 local plugin = plugin
 local toolbar = plugin:CreateToolbar(PLUGIN_NAME)
 
---[[ Global state for auto syncing.
-
-  If true, the "Sync" button will continuously sync with the server. If false,
-  it syncs once. ]]
-local isAutoSyncEnabled = false
-
 --------------------------------------------------------------------------------
 -- User Interface
 --------------------------------------------------------------------------------
@@ -69,8 +63,7 @@ local function setupSyncButton()
     while syncing do
       local success = protectedImport()
 
-      if not success and syncing and isAutoSyncEnabled then
-        syncing = false
+      if not success then
         break
       end
 
@@ -86,36 +79,16 @@ local function setupSyncButton()
       -- This gets run after the above function breaks out of its loop.
       print("[StudioBridge] Auto syncing stopped")
     end
-
-    syncing = false
   end
 
   button.Click:connect(function()
-    if isAutoSyncEnabled then
+    if not syncing then
       print("[StudioBridge] Started auto syncing file changes. Click "..
         "\"Sync\" again to stop")
       autoImport(sycning, plugin)
     else
-      print("[StudioBridge] Importing files from the server")
-      protectedImport()
+      syncing = false
     end
-  end)
-end
-
-local function createAutoSyncToggleButton()
-  local tooltip = "Changes the \"Sync\" button to a toggle. When on, file "..
-    "changes will be synced automatically."
-  local icon = "rbxassetid://628461676"
-
-  return toolbar:CreateButton("Toggle Auto Syncing", tooltip, icon)
-end
-
-local function setupAutoSyncToggleButton()
-  local button = createAutoSyncToggleButton()
-
-  button.Click:connect(function()
-    isAutoSyncEnabled = not isAutoSyncEnabled
-    print("[StudioBridge] Auto syncing set to", isAutoSyncEnabled)
   end)
 end
 
@@ -146,5 +119,4 @@ local function setupInfoButton()
 end
 
 setupSyncButton()
-setupAutoSyncToggleButton()
 setupInfoButton()
