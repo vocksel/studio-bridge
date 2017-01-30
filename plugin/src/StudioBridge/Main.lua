@@ -85,7 +85,7 @@ local function setupSyncButton()
     if not syncing then
       print("[StudioBridge] Started auto syncing file changes. Click "..
         "\"Sync\" again to stop")
-      autoImport(sycning, plugin)
+      autoImport()
     else
       syncing = false
     end
