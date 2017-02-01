@@ -101,3 +101,10 @@ For example, you can toggle the Disabled property from the Properties panel and 
 ## Cleanup
 
 All of your code, once synced, *will not be removed* by Studio Bridge. This means if you restructure your project, you'll need to delete everything from Studio manually.
+
+## Contributing
+
+The plugin and CLI are both hosted on independent GitHub repositories. To learn how to contribute to each one, check out their respective READMEs.
+
+- [Plugin](https://github.com/vocksel/studio-bridge-plugin)
+- [CLI](https://github.com/vocksel/studio-bridge-cli)
