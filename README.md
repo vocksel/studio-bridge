@@ -35,9 +35,7 @@ The CLI should now be globally accessible on the command-line. Run the following
 $ studio-bridge --version
 ```
 
-When passed a directory, the CLI starts the HTTP server that the plugin gets files from. It needs to be running for the plugin to work.
-
-For more information, see the [dedicated repository for the CLI][cli-repo].
+When passed a directory, the CLI starts the HTTP server that the plugin gets files from. It needs to be running for the plugin to work. For more information, see the [dedicated repository for the CLI][cli-repo].
 
 ### In Your Game
 
