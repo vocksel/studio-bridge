@@ -21,9 +21,7 @@ The plugin is [hosted on Roblox's website](https://www.roblox.com/library/626028
 
 ### Installing the CLI
 
-Requires [NodeJS](https://nodejs.org) 6.x.
-
-With NodeJS installed, run the following command to install the command-line interface:
+Install [NodeJS](https://nodejs.org), then run the following command to install the command-line interface:
 
 ```shell
 $ npm install -g studio-bridge
@@ -59,7 +57,7 @@ Server started on http://localhost:8080
 Using: /path/to/src/
 ```
 
-Click the plugin's "Sync" button, and you'll notice a `HelloWorld` Script at the same level as all the Roblox Services.
+Click the plugin's "Sync" button, and if everything was setup correctly, you'll notice a `HelloWorld` Script at the same level as all the Roblox Services.
 
 ![The HelloWorld script placed in the DataModel with services like Workspace and Players.](images/right-in-the-datamodel.png)
 
