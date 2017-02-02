@@ -4,9 +4,9 @@ Synchronize Lua code from your computer to Roblox Studio.
 
 ![Studio Bridge in action.](images/in-action.gif)
 
-Studio Bridge is a combination of an HTTP server and a Roblox plugin. The server collects the files, and the plugin syncs the files to Studio.
+Studio Bridge is a combination of a command-line interface and Roblox plugin. The CLI runs a server that collects all your files, and the plugin syncs the files to Studio.
 
-Requires NodeJS 6.x.
+This repo acts as a setup guide. The plugin and CLI are hosted on their own repositories.
 
 ## Setup
 
@@ -14,13 +14,13 @@ There are a few steps to getting everything setup, but once complete you'll be a
 
 ### Installing the Plugin
 
-The plugin is hosted on Roblox's website and can be found [here](https://www.roblox.com/library/626028645/Studio-Bridge).
+The plugin is [hosted on Roblox's website](https://www.roblox.com/library/626028645/Studio-Bridge) and can be easily downloaded right from inside Studio.
 
 ### Installing the CLI
 
 Requires [NodeJS](https://nodejs.org) 6.x.
 
-With NodeJS installed, run the following command to install the command-line interface for running the server:
+With NodeJS installed, run the following command to install the command-line interface:
 
 ```shell
 $ npm install -g studio-bridge
