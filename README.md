@@ -34,14 +34,6 @@ This has to be done in each game you want to use Studio Bridge with. HttpEnabled
 
 ## Usage
 
-<!-- With the plugin and server installed, you're ready to start syncing your files from the filesystem to Studio.
-
-Your workflow will be the following:
-
-- Run `studio-bridge` on your source directory.
-- Start syncing in Studio.
-- Code in your favorite text editor. -->
-
 Start by creating a directory named `src`, then add `HelloWorld.lua` with the following contents:
 
 ```lua
