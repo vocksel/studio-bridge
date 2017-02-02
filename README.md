@@ -26,6 +26,16 @@ With NodeJS installed, run the following command to install the command-line int
 $ npm install -g studio-bridge
 ```
 
+The CLI should now be globally accessible on the command-line. Run the following to verify:
+
+```shell
+$ studio-bridge --version
+```
+
+When passed a directory, the CLI starts the HTTP server that the plugin gets files from. It needs to be running for the plugin to work.
+
+For more information, see the [dedicated repository for the CLI](https://github.com/vocksel/studio-bridge-cli).
+
 ### In Your Game
 
 You'll need to set `HttpService.HttpEnabled` to `true` for the plugin to communicate with the server.
@@ -40,9 +50,15 @@ Start by creating a directory named `src`, then add `HelloWorld.lua` with the fo
 print("Hello, World! I'm located at", script:GetFullName())
 ```
 
-Start up the server by running `studio-bridge src/` and sync your changes to the game with the plugin's `Sync` button.
+Use the `studio-bridge` command to start the server so the plugin has something to sync with:
 
-When synced, you'll notice a `HelloWorld` Script at the same level as all the Roblox Services.
+```shell
+$ studio-bridge src/
+Server started on http://localhost:8080
+Using: /path/to/src/
+```
+
+Click the plugin's "Sync" button, and you'll notice a `HelloWorld` Script at the same level as all the Roblox Services.
 
 ![The HelloWorld script placed in the DataModel with services like Workspace and Players.](images/right-in-the-datamodel.png)
 
