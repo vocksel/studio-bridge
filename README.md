@@ -1,5 +1,8 @@
 # Studio Bridge
 
+[plugin-repo]: https://github.com/vocksel/studio-bridge-plugin
+[cli-repo]: https://github.com/vocksel/studio-bridge-cli
+
 Synchronize Lua code from your computer to Roblox Studio.
 
 ![Studio Bridge in action.](images/in-action.gif)
@@ -34,7 +37,7 @@ $ studio-bridge --version
 
 When passed a directory, the CLI starts the HTTP server that the plugin gets files from. It needs to be running for the plugin to work.
 
-For more information, see the [dedicated repository for the CLI](https://github.com/vocksel/studio-bridge-cli).
+For more information, see the [dedicated repository for the CLI][cli-repo].
 
 ### In Your Game
 
@@ -114,5 +117,5 @@ All of your code, once synced, *will not be removed* by Studio Bridge. This mean
 
 The plugin and CLI are both hosted on independent GitHub repositories. To learn how to contribute to each one, check out their respective READMEs.
 
-- [Plugin](https://github.com/vocksel/studio-bridge-plugin)
-- [CLI](https://github.com/vocksel/studio-bridge-cli)
+- [Plugin repo][plugin-repo].
+- [CLI repo][cli-repo].
