@@ -73,6 +73,8 @@ src/
     HelloWorld.lua
 ```
 
+Be sure to delete the `HelloWorld` Script from the last sync. Studio Bridge doesn't handle the removal of non-synced code, so you'll have to do that manually. See [Cleanup](#cleanup).
+
 When synced, the HelloWorld script shows up under ServerScriptService in-game.
 
 ![The HelloWorld script under ServerScriptService in-game](images/in-the-right-place.png)
