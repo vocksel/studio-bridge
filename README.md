@@ -85,7 +85,7 @@ Run the game, and you should see the following in your output:
 
 And that's all there is to it! You're all set to start incorporating Studio Bridge into your workflow. Getting setup is a bit of work, but once complete it's easy to code from your favorite text editor and have it synced to Studio.
 
-This section only covers plain Scripts. You'll no doubt want to make use of LocalScripts and ModuleScripts in your game, so for configuring which Script class your file uses, see the next section.
+This guide only covers plain Scripts, but you'll no doubt want to make use of LocalScripts and ModuleScripts in your game aswell. For configuring which Script class your file uses, see [Properties](#Properties) below.
 
 ## Properties
 
