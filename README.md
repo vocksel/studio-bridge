@@ -41,18 +41,22 @@ This has to be done in each game you want to use Studio Bridge with. HttpEnabled
 
 ## Usage
 
-Start by creating a directory named `src`, then add `HelloWorld.lua` with the following contents:
+Start by creating a directory named `sample`, then create a file named `HelloWorld.lua` with the following contents:
 
 ```lua
 print("Hello, World! I'm located at", script:GetFullName())
 ```
 
-Use the `studio-bridge` command to start the server so the plugin has something to sync with:
+It should look something like this:
+
+![What everything looks like on the filesystem.](images/starting-filesystem-hierarchy.png)
+
+Next we want to start the server so the plugin has something to sync with. Run the `studio-bridge` command, passing in the `sample` directory:
 
 ```shell
-$ studio-bridge src/
+$ studio-bridge sample/
 Server started on http://localhost:8080
-Using: /path/to/src/
+Using: C:\sample
 ```
 
 Click the plugin's "Sync" button, and if everything was setup correctly, you'll notice a `HelloWorld` Script at the same level as all the Roblox Services.
@@ -64,7 +68,7 @@ This is because Studio Bridge overlays the directory structure on the DataModel.
 Move `HelloWorld.lua` into a new `ServerScriptService` directory:
 
 ```
-src/
+sample/
   ServerScriptServive/
     HelloWorld.lua
 ```
