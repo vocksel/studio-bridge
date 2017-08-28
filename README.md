@@ -21,7 +21,7 @@ src/
       Client.local.lua
 ```
 
-**NOTE:** Studio Bridge is not suitable for Team Create. It actively overwrites the scripts it manages, reverting any changes another user makes immediately.
+**NOTE:** Studio Bridge is not suitable for Team Create. It actively overwrites the scripts it manages, immediately reverting any changes another user makes.
 
 ## Setup
 
