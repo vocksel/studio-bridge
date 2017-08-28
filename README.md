@@ -107,27 +107,53 @@ And that's all there is to getting your code from the filesystem into Studio. Ge
 
 We only cover regular Scripts in this guide, but you'll no doubt want to make use of LocalScripts, ModuleScripts, and even things like RemoteEvents. This is all covered below.
 
-## Properties
+## Instances
 
-Roblox Studio has the Properties panel for configuring properties of your Scripts. This cannot be accessed on the filesystem, so to work around it we have the following rules:
+Studio Bridge converts folders and Lua files into their Roblox equivalents. JSON files can be used for more complex instances, like `Sounds` and `RemoteEvents`.
 
-### ClassName
+### Global Properties
 
-`ClassName` is set by appending short versions of Script classes after the filename, like so:
+These apply to every file/directory that Studio Bridge handles.
 
-- `Sample.local.lua` compiles to a `LocalScript`.
-- `Sample.module.lua` compiles to a `ModuleScript`.
-- Anything else compiles to a `Script`. For consistency you can use `Sample.script.lua`.
+- The `Name` property is set to the name of the file/directory. If you had a file named `Sample.lua`, it would compile into a `Script` named `Sample`.
 
-### Name
+### Script Properties
 
-The `Name` property is set by the filename. `Sample.lua` would become a `Script` named `Sample`.
+Applies to all `.lua` files.
 
-### Other Properties
+- `ClassName` is set by appending short versions of Script classes after the filename, like so:
+  - `Sample.local.lua` compiles to a `LocalScript`.
+  - `Sample.module.lua` compiles to a `ModuleScript`.
+  - Anything else compiles to a `Script`. For consistency you can use `Sample.script.lua`.
+- `Source` is set to the contents of the file.
 
-All other properties can be set once Studio Bridge first syncs your files.
+### Folder Properties
 
-For example, you can toggle the Disabled property from the Properties panel and it will not be overridden next sync.
+- `ClassName` is set to `Folder` for all directories.
+
+### Other Instances
+
+JSON files make up every other instance.
+
+To use them, you just make a list of properties. The only mandatory property is the `ClassName`. The `Name` property is still the name of the file.
+
+For example, say you wanted to add a StarterHumanoid. Your files would look like this:
+
+```
+src/
+  StarterPlayer/
+    StarterHumanoid.json
+```
+
+And `StarterHumanoid.json` could have the following contents:
+
+```json
+{
+  "ClassName": "Humanoid",
+  "WalkSpeed": 20,
+  "HealthDisplayDistance": 50
+}
+```
 
 ## Cleanup
 
