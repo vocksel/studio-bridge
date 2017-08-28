@@ -53,7 +53,9 @@ In each game you want to use Studio Bridge with, you'll need to set `HttpService
 
 HttpEnabled can't be changed by plugins, so unfortunately this has to be done manually.
 
-## Usage
+## Tutorial
+
+This sections guides you through setting up a project on your computer and using Studio Bridge to sync it all to Studio
 
 Start by creating a directory named `sample`, then create a file named `HelloWorld.lua` with the following contents:
 
@@ -73,11 +75,15 @@ Server started on http://localhost:8080
 Using: C:\sample
 ```
 
-Click the plugin's "Sync" button, and if everything was setup correctly, you'll notice a `HelloWorld` Script at the same level as all the Roblox Services.
+Next click the plugin's "Sync" button from inside Studio.
+
+![The Sync button highlighted in Studio](images/highlighted-sync-buttobn.png)
+
+If everything was setup correctly, you'll notice a `HelloWorld` Script at the same level as all the Roblox Services.
 
 ![The HelloWorld script placed in the DataModel with services like Workspace and Players.](images/right-in-the-datamodel.png)
 
-This is because Studio Bridge overlays the directory structure on the DataModel. To have your files show up under services like ReplicatedStorage and ServerScriptServices, you need to add directories with those names.
+This is because Studio Bridge overlays the directory structure on the DataModel. To have your files show up under services like `ReplicatedStorage` and `ServerScriptServices`, you need to add directories with those names.
 
 Move `HelloWorld.lua` into a new `ServerScriptService` directory:
 
@@ -87,9 +93,9 @@ sample/
     HelloWorld.lua
 ```
 
-Be sure to delete the `HelloWorld` Script from the last sync. Studio Bridge doesn't handle the removal of non-synced code, so you'll have to do that manually.
+Be sure to delete the `HelloWorld` Script from the last sync. Studio Bridge doesn't remove things for you, so you'll have to do that manually.
 
-When synced, the HelloWorld script shows up under ServerScriptService in-game.
+When synced, the HelloWorld script now shows up under `ServerScriptService` in-game.
 
 ![The HelloWorld script under ServerScriptService in-game](images/in-the-right-place.png)
 
@@ -97,9 +103,9 @@ Run the game, and you should see the following in your output:
 
 ![The output window, displaying "Hello, World! I'm located at ServerScriptService.HelloWorld"](images/output.png)
 
-And that's all there is to it! You're all set to start incorporating Studio Bridge into your workflow. Getting setup is a bit of work, but once complete it's easy to code from your favorite text editor and have it synced to Studio.
+And that's all there is to getting your code from the filesystem into Studio. Getting setup is a bit of work, but once complete it's easy to code from your favorite text editor and have it synced over.
 
-This guide only covers plain Scripts, but you'll no doubt want to make use of LocalScripts and ModuleScripts in your game aswell. For configuring which Script class your file uses, see [Properties](#Properties) below.
+We only cover regular Scripts in this guide, but you'll no doubt want to make use of LocalScripts, ModuleScripts, and even things like RemoteEvents. This is all covered below.
 
 ## Properties
 
