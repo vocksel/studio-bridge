@@ -25,13 +25,13 @@ src/
 
 ## Setup
 
-There are a few steps to getting everything setup, but once complete you'll be able to code in your favorite text editor and have your changes sync directly to Studio.
+Studio Bridge is a combination of a command-line interface and a Roblox plugin. This makes setup a bit tricky, but once complete you'll have significantly more control over your code.
 
-### Installing the Plugin
+### Plugin
 
 The plugin is [hosted on Roblox's website](https://www.roblox.com/library/626028645/Studio-Bridge) and can be easily downloaded right from inside Studio.
 
-### Installing the CLI
+### CLI
 
 Install [NodeJS](https://nodejs.org), then run the following command to install the command-line interface:
 
@@ -45,11 +45,13 @@ The CLI should now be globally accessible on the command-line. Run the following
 $ studio-bridge --version
 ```
 
-### In Your Game
+This will display the CLI's current version. If this worked with no errors, the CLI is successfully installed.
 
-You'll need to set `HttpService.HttpEnabled` to `true` for the plugin to communicate with the server.
+### Game
 
-This has to be done in each game you want to use Studio Bridge with. HttpEnabled can't be changed by Plugins, so unfortunately this can't be handled for you.
+In each game you want to use Studio Bridge with, you'll need to set `HttpService.HttpEnabled` to `true`. This allows the plugin to communicate with the server. Without HTTP requests, changes cannot be synced.
+
+HttpEnabled can't be changed by plugins, so unfortunately this has to be done manually.
 
 ## Usage
 
