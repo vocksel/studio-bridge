@@ -5,11 +5,23 @@
 
 Synchronize Lua code from your computer to Roblox Studio.
 
-Studio Bridge is a combination of a command-line interface and Roblox plugin. The CLI runs a server that collects all your files, and the plugin syncs the files to Studio.
+![Gif demonstrating Studio Bridge.](images/in-action.gif)
 
-This repo acts as a setup guide. The plugin and CLI are hosted on their own repositories.
+You lay out your project to mimic Roblox's hierarchy, and Studio Bridge does the rest.
 
-![Studio Bridge in action.](images/in-action.gif)
+```
+src/
+  ReplicatedStorage/
+    Event.json
+    Shared.module.lua
+  ServerScriptService/
+    Server.lua
+  StarterPlayerScripts/
+    StarterPlayer/
+      Client.local.lua
+```
+
+**NOTE:** Studio Bridge is not suitable for Team Create. It actively overwrites the scripts it manages, reverting any changes another user makes immediately.
 
 ## Setup
 
