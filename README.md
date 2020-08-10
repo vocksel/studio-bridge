@@ -89,7 +89,7 @@ Move `HelloWorld.lua` into a new `ServerScriptService` directory:
 
 ```
 sample/
-  ServerScriptServive/
+  ServerScriptService/
     HelloWorld.lua
 ```
 
